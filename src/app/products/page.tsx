@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import FilterPanel, { SortSelect } from "@/components/filter-panel";
 import ProductCard from "@/components/product-card";
+import DbNotice from "@/components/db-notice";
 import Reveal from "@/components/reveal";
 import { getCatalog, getCategories, loadCatalog } from "@/lib/data";
 import { formatNumber, toPersianDigits } from "@/lib/format";
@@ -82,7 +83,8 @@ export default async function ProductsPage({ searchParams }: { searchParams: Sea
     <div className="relative">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-bone-deep to-bone" />
 
-      <div className="wrap relative pt-8">
+      <div className="wrap relative pt-2">
+        <DbNotice dbEmpty={products.length === 0} />
         <nav aria-label="مسیر صفحه" className="flex items-center gap-1.5 text-[11px] text-ink-muted">
           <Link href="/" className="hover:text-clay">
             خانه

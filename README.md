@@ -42,6 +42,65 @@ npm run build && npm start
 - SEO: متادیتای هر صفحه، sitemap داینامیک، robots (با قواعد ربات‌های AI)، JSON-LD (Product، Offer، FAQPage، Organization، BreadcrumbList)، تصاویر بهینه‌شدهٔ AVIF/WebP
 - فونت وزیرمتن + نمایش لاتین، انیمیشن‌های سبک CSS/IntersectionObserver و احترام به `prefers-reduced-motion`
 
+
+## استقرار روی Vercel (راهنمای کامل)
+
+پروژه **بدون `DATABASE_URL` هم بیلد می‌شود** (کلاینت دیتابیس lazy است و صفحهٔ sitemap خطا را
+به‌صورت امن مدیریت می‌کند)؛ اما برای نمایش محصولات و کار کردن سبد خرید، دیتابیس لازم است.
+
+### ۱) یک PostgreSQL ابری بسازید
+یکی از این‌ها کافی است و پلن رایگان دارند: **Neon**، **Supabase**، **Railway** یا **Aiven**.
+رشتهٔ اتصال (Connection String / Pooled) را کپی کنید و در صورت نیاز `?sslmode=require` را
+به انتهای آن اضافه کنید.
+
+### ۲) متغیرهای محیطی را در Vercel تنظیم کنید
+`Project → Settings → Environment Variables` (برای هر سه محیط Production/Preview/Development):
+
+| کلید | مقدار |
+| --- | --- |
+| `DATABASE_URL` | رشتهٔ اتصال PostgreSQL ابری |
+| `ADMIN_PASSWORD` | رمز دلخواه پنل مدیریت (مثلاً یک رمز قوی) |
+| `AUTH_SECRET` | یک رشتهٔ تصادفی بلند (حداقل ۳۲ کاراکتر) |
+| `NEXT_PUBLIC_SITE_URL` | دامنهٔ نهایی سایت، مثل `https://sp.vercel.app` |
+| `DATABASE_SSL` | فقط اگر ارائه‌دهنده SSL اجباری دارد: `true` |
+
+بدون تنظیم `NEXT_PUBLIC_SITE_URL`، آدرس دامنه به‌صورت خودکار از
+`VERCEL_PROJECT_PRODUCTION_URL` خوانده می‌شود (canonical و sitemap درست می‌مانند).
+
+### ۳) جدول‌ها را بسازید و دادهٔ نمونه را وارد کنید
+از سیستم خودتان (با همان رشتهٔ اتصال ابری):
+
+```bash
+npx drizzle-kit push --dialect postgresql --schema ./src/db/schema.ts --url "$DATABASE_URL"
+node scripts/seed.mjs          # اختیاری: ۱۲ محصول، ۵ دسته، ۳ سفارش و ۳ کد تخفیف نمونه
+```
+
+سپس در Vercel دکمهٔ **Redeploy** را بزنید. بعد از آن، `/api/health` باید
+`{"ok":true,"database":"connected"}` برگرداند و محصولات در سایت دیده شوند.
+
+### ۴) اگر بیلد موفق شد ولی سایت خالی بود
+یعنی متغیر `DATABASE_URL` در محیط Production ثبت نشده یا جدول‌ها ساخته نشده‌اند. در بالای
+صفحهٔ اصلی و صفحهٔ فروشگاه، یک نوار راهنما با همین توضیحات و دستورها نمایش داده می‌شود.
+
+### نکته‌های فنی مخصوص Vercel
+
+- `src/db/index.ts` کلاینت را **lazy** می‌سازد؛ هیچ خطایی در مرحلهٔ `Collecting page data` رخ نمی‌دهد.
+- روی رشتهٔ اتصال **Pooled** (مثل Neon pooling یا Supabase port 6543) از `DATABASE_POOL_MAX=5` استفاده کنید.
+- صفحه‌های وابسته به دیتابیس `dynamic = "force-dynamic"` دارند و در بیلد پیش‌رندر نمی‌شوند.
+- تصاویر از دامنهٔ `images.pexels.com` در `next.config.ts` مجاز شده‌اند؛ اگر دامنهٔ تصویر جدیدی اضافه کردید، همان‌جا `remotePatterns` را به‌روز کنید.
+
+### خطای رایج قبلی (برطرف شد)
+
+```
+Error: DATABASE_URL is required
+> Build error occurred
+Error: Failed to collect page data for /sitemap.xml
+```
+
+علت: ماژول دیتابیس در زمان import، وجود `DATABASE_URL` را الزامی می‌کرد و Next هنگام
+`Collecting page data` برای `sitemap.xml` آن را وارد می‌کرد. حالا ساخت کلاینت به اولین
+کوئری موکول شده و `sitemap` در نبود دیتابیس، مسیرهای ثابت را برمی‌گرداند.
+
 ## متغیرهای محیطی
 
 | کلید | توضیح |
@@ -50,6 +109,8 @@ npm run build && npm start
 | `ADMIN_PASSWORD` | رمز ورود پنل |
 | `AUTH_SECRET` | کلید امضای کوکی نشست |
 | `NEXT_PUBLIC_SITE_URL` | آدرس عمومی برای canonical/sitemap |
+| `DATABASE_SSL` | در صورت الزام SSL توسط ارائه‌دهندهٔ دیتابیس: `true` |
+| `DATABASE_POOL_MAX` | حداکثر اتصال همزمان (پیش‌فرض ۵) |
 | `KAVENEGAR_API_KEY`, `KAVENEGAR_SENDER` | پیامک واقعی سفارش (اختیاری) |
 
 جزئیات اسکیل‌ها و راهبرد SEO در `SKILLS.md` آمده است.

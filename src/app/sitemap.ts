@@ -1,9 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getCategories, loadCatalog } from "@/lib/data";
+import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const base = SITE_URL;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes: MetadataRoute.Sitemap = [

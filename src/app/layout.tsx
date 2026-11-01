@@ -5,8 +5,9 @@ import CartProvider from "@/components/cart-provider";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import CartDrawer from "@/components/cart-drawer";
+import { SITE_URL } from "@/lib/site";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = SITE_URL;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

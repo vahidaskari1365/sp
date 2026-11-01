@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getCategories, getCategoryCounts, getFeaturedProducts } from "@/lib/data";
 import ProductRail from "@/components/product-rail";
+import DbNotice from "@/components/db-notice";
 import Reveal, { Counter } from "@/components/reveal";
 import { FAQS, PROCESS_STEPS, TESTIMONIALS } from "@/lib/content";
 import { formatNumber, toPersianDigits } from "@/lib/format";
@@ -118,6 +119,8 @@ export default async function HomePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
+
+      <DbNotice dbEmpty={featured.length === 0} />
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden bg-bone">

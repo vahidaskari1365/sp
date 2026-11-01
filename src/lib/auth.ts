@@ -3,8 +3,19 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 const COOKIE_NAME = "termeh_admin";
 
+let warnedAboutSecret = false;
+
 function secret() {
-  return process.env.AUTH_SECRET ?? "termeh-dev-secret-change-me";
+  const configured = process.env.AUTH_SECRET;
+  if (configured && configured.length > 0) return configured;
+
+  if (process.env.NODE_ENV === "production" && !warnedAboutSecret) {
+    warnedAboutSecret = true;
+    console.warn(
+      "[auth] AUTH_SECRET is not set. Falling back to a key derived from ADMIN_PASSWORD — set AUTH_SECRET in production to invalidate forged sessions.",
+    );
+  }
+  return `termeh:${adminPassword()}:session-key`;
 }
 
 function adminPassword() {
