@@ -2,13 +2,21 @@
 
 import { useEffect, useRef, useState, type ElementType, type ReactNode } from "react";
 
+type RevealVariant = "default" | "image" | "cine";
+
 type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-  variant?: "default" | "image";
+  variant?: RevealVariant;
   as?: ElementType;
   id?: string;
+};
+
+const VARIANT_CLASS: Record<RevealVariant, string> = {
+  default: "reveal",
+  image: "reveal-host",
+  cine: "reveal-cine",
 };
 
 export default function Reveal({
@@ -47,9 +55,18 @@ export default function Reveal({
       ref={ref}
       data-visible={visible ? "true" : "false"}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`${variant === "image" ? "reveal-image" : "reveal"} ${className}`}
+      className={`${VARIANT_CLASS[variant]} ${className}`}
     >
-      {children}
+      {variant === "image" ? (
+        /*
+         * The clip-path lives on an inner element on purpose: a fully clipped
+         * element (inset 0 0 100% 0) reports an empty intersection rect in
+         * Chrome, so an observer on the clipped node itself would never fire.
+         */
+        <div className="reveal-image">{children}</div>
+      ) : (
+        children
+      )}
     </Tag>
   );
 }

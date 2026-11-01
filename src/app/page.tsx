@@ -5,6 +5,7 @@ import { getCategories, getCategoryCounts, getFeaturedProducts } from "@/lib/dat
 import ProductRail from "@/components/product-rail";
 import DbNotice from "@/components/db-notice";
 import Reveal, { Counter } from "@/components/reveal";
+import { Dust, Parallax } from "@/components/cinema";
 import { FAQS, PROCESS_STEPS, TESTIMONIALS } from "@/lib/content";
 import { formatNumber, toPersianDigits } from "@/lib/format";
 
@@ -124,7 +125,9 @@ export default async function HomePage() {
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden bg-bone">
+        <div className="pointer-events-none absolute inset-0 bg-mesh" />
         <div className="pointer-events-none absolute inset-0 stack-grid opacity-[0.35]" />
+        <Dust count={8} className="z-[1]" />
         <div className="pointer-events-none absolute -right-40 top-10 size-[520px] rounded-full bg-clay-soft/40 blur-[130px]" />
         <div className="pointer-events-none absolute -left-32 bottom-0 size-[420px] rounded-full bg-sand blur-[110px]" />
 
@@ -139,29 +142,31 @@ export default async function HomePage() {
             </Reveal>
 
             <Reveal delay={80}>
-              <h1 className="mt-5 text-[clamp(2.5rem,6.2vw,4.7rem)] font-black leading-[1.14] tracking-tight">
-                پوشاکی که
+              <h1 className="text-cine mt-5 text-[clamp(2.5rem,6.2vw,4.7rem)] font-black leading-[1.14] tracking-tight">
+                <span style={{ animationDelay: "0.15s" }}>پوشاکی که</span>
                 <br />
-                با تو
-                <span className="relative mx-3 inline-block">
-                  <span className="relative z-10 text-clay">نفس</span>
-                  <svg
-                    className="absolute -bottom-1 right-0 z-0 w-full text-clay/25"
-                    height="14"
-                    viewBox="0 0 200 14"
-                    preserveAspectRatio="none"
-                    aria-hidden
-                  >
-                    <path
-                      d="M2 9C40 3 74 11 110 6s60 2 88-2"
-                      stroke="currentColor"
-                      strokeWidth="6"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                  </svg>
+                <span style={{ animationDelay: "0.32s" }}>
+                  با تو
+                  <span className="relative mx-3 inline-block">
+                    <span className="relative z-10 text-clay">نفس</span>
+                    <svg
+                      className="absolute -bottom-1 right-0 z-0 w-full text-clay/25"
+                      height="14"
+                      viewBox="0 0 200 14"
+                      preserveAspectRatio="none"
+                      aria-hidden
+                    >
+                      <path
+                        d="M2 9C40 3 74 11 110 6s60 2 88-2"
+                        stroke="currentColor"
+                        strokeWidth="6"
+                        strokeLinecap="round"
+                        fill="none"
+                      />
+                    </svg>
+                  </span>
+                  می‌کشد
                 </span>
-                می‌کشد
               </h1>
             </Reveal>
 
@@ -216,7 +221,7 @@ export default async function HomePage() {
           </div>
 
           {/* Hero visual */}
-          <div className="relative">
+          <Parallax className="relative" speed={0.07} maxShift={56}>
             <Reveal variant="image" className="relative mr-auto w-[86%] overflow-hidden rounded-t-[280px] rounded-b-[28px] bg-sand shadow-[0_40px_90px_-50px_rgba(23,18,12,0.7)]">
               <div className="relative aspect-[4/5.1]">
                 <Image
@@ -225,7 +230,7 @@ export default async function HomePage() {
                   fill
                   priority
                   sizes="(max-width: 1024px) 90vw, 44vw"
-                  className="object-cover"
+                  className="kenburns object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-ink/35 via-transparent to-transparent" />
               </div>
@@ -239,7 +244,7 @@ export default async function HomePage() {
                     alt="پیراهن ابریشمی ترمه"
                     fill
                     sizes="128px"
-                    className="object-cover"
+                    className="kenburns-slow object-cover"
                   />
                 </div>
               </Reveal>
@@ -274,7 +279,7 @@ export default async function HomePage() {
                 ۱۰۰٪ پارچهٔ طبیعی
               </span>
             </div>
-          </div>
+          </Parallax>
         </div>
 
         {/* value marquee */}
@@ -295,7 +300,7 @@ export default async function HomePage() {
 
       {/* ---------------- CATEGORIES ---------------- */}
       <section className="section-pad wrap" aria-labelledby="categories-title">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4">
+        <Reveal variant="cine" className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="eyebrow">دسته‌بندی‌ها</span>
             <h2 id="categories-title" className="mt-3 text-[clamp(1.7rem,3.4vw,2.6rem)] font-black">
@@ -360,7 +365,7 @@ export default async function HomePage() {
       {/* ---------------- FEATURED RAIL ---------------- */}
       <section className="relative overflow-hidden bg-bone-deep/50 py-16" aria-labelledby="featured-title">
         <div className="wrap flex flex-wrap items-end justify-between gap-4">
-          <Reveal>
+          <Reveal variant="cine">
             <span className="eyebrow">کالکشن برگزیده</span>
             <h2 id="featured-title" className="mt-3 text-[clamp(1.7rem,3.4vw,2.6rem)] font-black">
               انتخاب‌های این فصل
@@ -386,7 +391,7 @@ export default async function HomePage() {
                 alt="رول‌های پارچه در آتلیهٔ ترمه"
                 fill
                 sizes="(max-width: 1024px) 90vw, 48vw"
-                className="object-cover"
+                className="kenburns-slow object-cover"
               />
             </Reveal>
             <Reveal
@@ -457,8 +462,8 @@ export default async function HomePage() {
       </section>
 
       {/* ---------------- PROCESS ---------------- */}
-      <section className="relative overflow-hidden bg-ink py-16 text-bone" aria-labelledby="process-title">
-        <div className="pointer-events-none absolute -left-24 top-0 size-[380px] rounded-full bg-clay/25 blur-[110px]" />
+      <section className="vignette relative overflow-hidden bg-night bg-mesh-night py-16 text-bone" aria-labelledby="process-title">
+        <div className="pointer-events-none absolute -left-24 top-0 size-[380px] rounded-full bg-wine/30 blur-[110px]" />
         <div className="wrap relative">
           <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <Reveal>
@@ -482,7 +487,7 @@ export default async function HomePage() {
                 <Reveal
                   key={step.step}
                   delay={index * 110}
-                  className="group relative overflow-hidden rounded-3xl border border-bone/12 bg-bone/[0.04] p-5 backdrop-blur transition hover:border-gold/50 hover:bg-bone/[0.07]"
+                  className="spotlight-card group relative overflow-hidden rounded-3xl border border-bone/12 bg-bone/[0.04] p-5 backdrop-blur transition hover:border-gold/50 hover:bg-bone/[0.07]"
                 >
                   <span className="font-latin text-3xl text-gold/80">{step.step}</span>
                   <h3 className="mt-3 text-sm font-bold">{step.title}</h3>
@@ -499,7 +504,7 @@ export default async function HomePage() {
 
       {/* ---------------- LOOKBOOK BENTO ---------------- */}
       <section className="section-pad wrap" aria-labelledby="lookbook-title">
-        <Reveal className="flex flex-wrap items-end justify-between gap-4">
+        <Reveal variant="cine" className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="eyebrow">لوک‌بوک</span>
             <h2 id="lookbook-title" className="mt-3 text-[clamp(1.7rem,3.4vw,2.6rem)] font-black">
@@ -645,11 +650,11 @@ export default async function HomePage() {
 
       {/* ---------------- CTA ---------------- */}
       <section className="wrap section-pad">
-        <Reveal className="relative overflow-hidden rounded-[32px] bg-ink px-6 py-12 text-center text-bone sm:px-12">
-          <div className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-clay/30 blur-[90px]" />
-          <div className="pointer-events-none absolute -bottom-24 left-0 size-72 rounded-full bg-gold/20 blur-[110px]" />
+        <Reveal variant="cine" className="vignette relative overflow-hidden rounded-[32px] bg-night bg-mesh-night px-6 py-12 text-center text-bone sm:px-12">
+          <div className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-wine/35 blur-[90px]" />
+          <div className="pointer-events-none absolute -bottom-24 left-0 size-72 rounded-full bg-gold/25 blur-[110px]" />
           <div className="relative">
-            <p className="font-latin text-[11px] tracking-[0.4em] text-gold">SPRING EDIT 1405</p>
+            <p className="gold-text font-latin text-[11px] tracking-[0.4em]">SPRING EDIT 1405</p>
             <h2 className="mx-auto mt-4 max-w-xl text-[clamp(1.6rem,3.4vw,2.5rem)] font-black leading-[1.35]">
               اولین خریدتان ۱۵۰ هزار تومان ارزان‌تر است.
             </h2>

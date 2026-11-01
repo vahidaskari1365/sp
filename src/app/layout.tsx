@@ -5,6 +5,7 @@ import CartProvider from "@/components/cart-provider";
 import SiteHeader from "@/components/site-header";
 import SiteFooter from "@/components/site-footer";
 import CartDrawer from "@/components/cart-drawer";
+import { CinemaIntro, FilmGrain, ScrollProgress } from "@/components/cinema";
 import { SITE_URL } from "@/lib/site";
 
 const siteUrl = SITE_URL;
@@ -67,7 +68,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f8f2e8",
+  themeColor: "#faf5ea",
   colorScheme: "light",
   width: "device-width",
   initialScale: 1,
@@ -156,6 +157,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           رفتن به محتوای اصلی
         </a>
         <CartProvider>
+          <CinemaIntro />
+          <ScrollProgress />
+          <FilmGrain />
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />

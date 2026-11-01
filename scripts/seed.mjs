@@ -56,8 +56,133 @@ const KHAKI = ["خاکی", "#a98c6b"];
 const GREY = ["طوسی", "#8b8b85"];
 const BLUSH = ["صورتی خاکی", "#d8ada1"];
 const WHITE = ["سفید", "#f2eee7"];
+const BURGUNDY = ["شرابی", "#6b2432"];
+const SAFFRON = ["زعفرانی", "#c98f2d"];
+const CHAMPAGNE = ["شامپاینی", "#d9c39a"];
+const INDIGO = ["نیلی", "#3b4a6b"];
 
 const products = [
+  {
+    slug: "shabboo-wool-coat",
+    name: "پالتو پشمی شب‌بو",
+    subtitle: "رنگ شرابی عمیق، یقهٔ انگلیسی",
+    description:
+      "پالتو شب‌بو با پشم مرینوس در رنگ شرابی عمیق دوخته می‌شود؛ رنگی که از نقش‌های ترمهٔ سنتی الهام گرفته است. یقهٔ انگلیسی پهن و برش ماس‌کوت آن روی لایه‌های بافت به‌خوبی می‌نشیند و برای پاییز و زمستان طراحی شده است. جیب‌های مخفی کنار درز و دکمه‌های صدفی، جزئیاتی هستند که در نگاه دوم کشف می‌شوند.",
+    story:
+      "رنگ شرابی این پالتو از الگوی ترمهٔ یزد گرفته شده و در کارگاه رنگرزی با روش تثبیت دو‌مرحله‌ای رنگ می‌شود.",
+    fabric: "۸۰٪ پشم مرینوس، ۲۰٪ کشمیر — آستر ۱۰۰٪ ویسکوز",
+    care: "خشک‌شویی توصیه می‌شود. اتوی بخار ملایم از پشت پارچه.",
+    price: 5150000,
+    compareAtPrice: 6400000,
+    category: "outerwear",
+    isFeatured: true,
+    badge: "جدید",
+    rating: 49,
+    reviewCount: 47,
+    images: [img(291762), img(19271547), img(5652359)],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [BURGUNDY, BLACK, CREAM],
+  },
+  {
+    slug: "shabnam-velvet-dress",
+    name: "پیراهن مخمل شب شبنم",
+    subtitle: "مخمل کوبلنی، دامن کلوش",
+    description:
+      "پیراهن شبنم از مخمل کوبلنی سبک با آستر ساتن دوخته می‌شود؛ بالاتنهٔ دریده و دامن کلوش آن در هر حرکت موج برمی‌دارد. برای شب‌های سرد و مهمانی‌های رسمی، همراه ایده‌آل یک شال ابریشمی است.",
+    story: "مخمل این پیراهن در تیراژ محدود بافته می‌شود؛ از هر رنگ تنها ۶۰ قطعه دوخته می‌شود.",
+    fabric: "۹۲٪ مخمل کوبلنی، ۸٪ الاستان — آستر ساتن",
+    care: "خشک‌شویی. اتوی بخار سرد از پشت پارچه.",
+    price: 3280000,
+    compareAtPrice: 3950000,
+    category: "dresses",
+    isFeatured: true,
+    badge: "مجلسی",
+    rating: 50,
+    reviewCount: 62,
+    images: [img(972995), img(985635)],
+    sizes: ["XS", "S", "M", "L"],
+    colors: [BURGUNDY, NAVY],
+  },
+  {
+    slug: "roshank-satin-blouse",
+    name: "بلوز ساتن روشنک",
+    subtitle: "ساتن مات، مچ کشی",
+    description:
+      "بلوز روشنک از ساتن مات با افت طبیعی پارچه دوخته شده است؛ مچ کشی و فرم کمی آزاد آن را هم با شلوار رسمی و هم با جین هماهنگ می‌کند. درخشش ملایم ساتن در نور روز مات و در نور شب گرم دیده می‌شود.",
+    story: "الگوی این بلوز از بلوزهای دههٔ ۴۰ الهام گرفته و در سه رنگ مات تولید می‌شود.",
+    fabric: "۹۵٪ ویسکوز ساتن، ۵٪ الاستان",
+    care: "شست‌وشوی دستی با آب سرد یا کیسهٔ لباسشویی در برنامهٔ ملایم.",
+    price: 1850000,
+    compareAtPrice: 2300000,
+    category: "dresses",
+    isFeatured: true,
+    badge: null,
+    rating: 47,
+    reviewCount: 38,
+    images: [img(1926769), img(1021693)],
+    sizes: ["S", "M", "L", "XL"],
+    colors: [CHAMPAGNE, CREAM, BLACK],
+  },
+  {
+    slug: "golnar-knit-dress",
+    name: "پیراهن بافت گلنار",
+    subtitle: "بافت درشت مرینوس، فرم آزاد",
+    description:
+      "پیراهن بافت گلنار با نخ نیمه‌ضخیم مرینوس و بافت درشت بافته می‌شود؛ گرم، سبک و بدون خارش. فرم آزاد و قد روی زانو آن را برای روزهای کاری و تعطیلات آخر هفته مناسب می‌کند.",
+    story: "رنگ زعفرانی این بافت در دسته‌های کوچک رنگ می‌شود تا ناهمگونی طبیعی نخ حفظ شود.",
+    fabric: "۱۰۰٪ پشم مرینوس اکسترافاین",
+    care: "شست‌وشوی دستی با شامپوی پشم، خشک کردن افقی.",
+    price: 2450000,
+    compareAtPrice: null,
+    category: "knitwear",
+    isFeatured: false,
+    badge: "پیشنهاد ترمه",
+    rating: 48,
+    reviewCount: 57,
+    images: [img(1055691), img(8667730)],
+    sizes: ["S", "M", "L"],
+    colors: [SAFFRON, CREAM, OLIVE],
+  },
+  {
+    slug: "mahoor-striped-shirt",
+    name: "شومیز راه‌راه ماهور",
+    subtitle: "نخی پنبه‌ای، راه‌راه سرمه‌ای",
+    description:
+      "شومیز ماهور از پنبهٔ پنبه‌ای راه‌راه با یقهٔ کلاسیک و آستین کمی گشاد دوخته می‌شود؛ انتخابی همیشه‌به‌روز برای فصل‌های گرم که با هر رنگ شلوار هماهنگ می‌شود.",
+    story: "پارچهٔ راه‌راه این شومیز از یک کارگاه نساجی کوچک در یزد تأمین می‌شود.",
+    fabric: "۱۰۰٪ پنبهٔ پنبه‌ای",
+    care: "ماشین لباسشویی ۳۰ درجه، اتوی متوسط.",
+    price: 1590000,
+    compareAtPrice: 1980000,
+    category: "dresses",
+    isFeatured: false,
+    badge: null,
+    rating: 46,
+    reviewCount: 25,
+    images: [img(1462637), img(994523)],
+    sizes: ["XS", "S", "M", "L", "XL"],
+    colors: [WHITE, NAVY],
+  },
+  {
+    slug: "bardia-slim-jeans",
+    name: "شلوار جین اسلیم بردیا",
+    subtitle: "جین کشی، کمر متوسط",
+    description:
+      "جین بردیا با الیاف کشی کمی آزادتر از اسلیم کلاسیک دوخته می‌شود؛ برای روزهای بلند کاری که راحتی به‌اندازهٔ ظاهر مهم است. جین ۱۲ اونس با رنگ‌ثابت و دوخت تقویتی روی درزها تولید می‌شود.",
+    story: "الگوی بردیا پس از ۴ نمونهٔ آزمایشی روی قدهای ۱۶۵ تا ۱۹۰ سانتی‌متر نهایی شد.",
+    fabric: "۹۸٪ پنبه، ۲٪ الاستان",
+    care: "شست‌وشوی سرد و پشت‌ورو؛ خشک کردن در سایه.",
+    price: 1990000,
+    compareAtPrice: 2450000,
+    category: "pants",
+    isFeatured: true,
+    badge: "پرفروش",
+    rating: 47,
+    reviewCount: 73,
+    images: [img(2129970), img(4614235), img(4614224)],
+    sizes: ["30", "32", "34", "36", "38"],
+    colors: [INDIGO, BLACK],
+  },
   {
     slug: "mehr-wool-coat",
     name: "پالتو پشمی مِهر",
@@ -318,22 +443,12 @@ if (existing[0].c > 0 && !force) {
   process.exit(0);
 }
 
-await client.query(
-  "truncate table order_items, orders, product_images, variants, products, categories, coupons, subscribers restart identity cascade",
-);
-
-const categoryIds = {};
-for (const category of categories) {
-  const { rows } = await client.query(
-    "insert into categories (slug, name, tagline, image, sort_order) values ($1,$2,$3,$4,$5) returning id",
-    [category.slug, category.name, category.tagline, category.image, category.sortOrder],
-  );
-  categoryIds[category.slug] = rows[0].id;
-}
-
-const createdProducts = [];
-for (let index = 0; index < products.length; index += 1) {
-  const p = products[index];
+/**
+ * Insert one product together with its images and size/color variants.
+ * `index` drives both the "days back" date and the stock pattern, so the
+ * same catalog always lands with identical demo data.
+ */
+async function insertProduct(p, categoryIds, index) {
   const { rows } = await client.query(
     `insert into products
       (slug, name, subtitle, description, story, fabric, care, price, compare_at_price,
@@ -359,7 +474,6 @@ for (let index = 0; index < products.length; index += 1) {
     ],
   );
   const productId = rows[0].id;
-  createdProducts.push({ id: productId, ...p });
 
   for (let i = 0; i < p.images.length; i += 1) {
     await client.query(
@@ -373,13 +487,70 @@ for (let index = 0; index < products.length; index += 1) {
       const [colorName, colorHex] = p.colors[ci];
       let stock = ((index * 3 + si * 5 + ci * 7) % 9) + (ci === 0 ? 4 : 1);
       if ((index + si * 2 + ci * 3) % 13 === 0) stock = 0;
-      if (index === 7 && si < 2) stock = 0;
+      if (p.slug === "reel-cotton-tee" && si < 2) stock = 0;
       await client.query(
         "insert into variants (product_id, size, color_name, color_hex, stock, sku) values ($1,$2,$3,$4,$5,$6)",
         [productId, p.sizes[si], colorName, colorHex, stock, `${p.slug}-${p.sizes[si]}-${ci}`],
       );
     }
   }
+
+  return { id: productId, ...p };
+}
+
+if (existing[0].c > 0 && !force) {
+  // ------------------------------------------------------------------
+  // Append-only mode (default on a live store): add just the products
+  // whose slug is missing. Orders, coupons, stock and existing products
+  // stay completely untouched — no truncate, no data loss.
+  // ------------------------------------------------------------------
+  const { rows: catRows } = await client.query("select slug, id from categories");
+  const appendCategoryIds = Object.fromEntries(catRows.map((row) => [row.slug, row.id]));
+
+  for (const category of categories) {
+    if (appendCategoryIds[category.slug]) continue;
+    const { rows } = await client.query(
+      "insert into categories (slug, name, tagline, image, sort_order) values ($1,$2,$3,$4,$5) returning id",
+      [category.slug, category.name, category.tagline, category.image, category.sortOrder],
+    );
+    appendCategoryIds[category.slug] = rows[0].id;
+  }
+
+  const { rows: slugRows } = await client.query("select slug from products");
+  const knownSlugs = new Set(slugRows.map((row) => row.slug));
+  let added = 0;
+  for (let arrayIndex = 0; arrayIndex < products.length; arrayIndex += 1) {
+    const p = products[arrayIndex];
+    if (knownSlugs.has(p.slug)) continue;
+    await insertProduct(p, appendCategoryIds, arrayIndex);
+    added += 1;
+  }
+
+  console.log(
+    `Added ${added} new product(s) — ${knownSlugs.size} already existed. Orders, coupons and stock were untouched.`,
+  );
+  await client.end();
+  process.exit(0);
+}
+
+if (existing[0].c > 0 && force) {
+  await client.query(
+    "truncate table order_items, orders, product_images, variants, products, categories, coupons, subscribers restart identity cascade",
+  );
+}
+
+const categoryIds = {};
+for (const category of categories) {
+  const { rows } = await client.query(
+    "insert into categories (slug, name, tagline, image, sort_order) values ($1,$2,$3,$4,$5) returning id",
+    [category.slug, category.name, category.tagline, category.image, category.sortOrder],
+  );
+  categoryIds[category.slug] = rows[0].id;
+}
+
+const createdProducts = [];
+for (let index = 0; index < products.length; index += 1) {
+  createdProducts.push(await insertProduct(products[index], categoryIds, index));
 }
 
 for (const [code, type, value, minSubtotal, maxDiscount, maxUses] of coupons) {

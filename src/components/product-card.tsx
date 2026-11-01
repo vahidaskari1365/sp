@@ -20,7 +20,7 @@ export default function ProductCard({
   const hoverImage = product.images[1]?.url;
 
   return (
-    <article className="group relative flex h-full flex-col">
+    <article className="group relative flex h-full flex-col transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5">
       <Link
         href={`/products/${product.slug}`}
         className="relative block overflow-hidden rounded-[22px] bg-sand"
